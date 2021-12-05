@@ -2,10 +2,11 @@
 #include<stdbool.h>
 #include<time.h>
 
-
 void bubbleSort(int *arr,int n);
 void selectionSort(int *arr,int n);
 void insertionSort(int *arr,int n);
+void swap(int *a,int *b);
+
 
 int main()
 {
@@ -46,30 +47,33 @@ int main()
        i++;
     }
 
+    printf("\tn\t\tBubble_Sort\t\tSelection_Sort\t\tInsertion_Sort\n");
     for(int i=0;i<3;i++)
     {
         
-         double a,b,c,timetaken_bubblesort,timetaken_insertionsort,timetaken_selectionsort;
+         double a,b,c,d,timetaken_bubblesort,timetaken_insertionsort,timetaken_selectionsort;
         
         
             a=clock();
-            bubble_sort(arr,n);
+            bubbleSort(arr,n);
             b=clock();
-            selection_sort(arr,n);
+            selectionSort(arr,n);
             c=clock();
+            insertionSort(arr,n);
+            d=clock();
             timetaken_bubblesort=(b-a)/CLOCKS_PER_SEC;
             timetaken_selectionsort=(c-b)/CLOCKS_PER_SEC;
-            printf("%f\n",timetaken_bubblesort);
-            printf("%f\n",timetaken_selectionsort);
-           // insertion_sort(a,n);
+            timetaken_insertionsort=(d-c)/CLOCKS_PER_SEC;
+             printf("\t%d\t\t %f\t\t %f\t\t %f\n",n,timetaken_bubblesort,timetaken_selectionsort,timetaken_insertionsort);
+          
         n=n*10;
     }
 
 }
 
-bubble_sort(int *arr,int n)
+void bubbleSort(int *arr,int n)
 {
-     int switched=true,temp;
+     int switched=true;
 
     for(int pass=0;pass<n-1 &&switched;pass++)
     {
@@ -87,7 +91,7 @@ bubble_sort(int *arr,int n)
     }
 }
 
-selection_sort(int *arr,int n)
+void selectionSort(int *arr,int n)
 {
     int least,jMin;
     for(int i=0;i<n;i++)
@@ -106,6 +110,25 @@ selection_sort(int *arr,int n)
         arr[jMin]=arr[i];
         arr[i]=least;
     }
+}
+
+void insertionSort(int *arr,int n){
+    int j,key;
+    for(int i=1;i<n;i++)
+    {
+        key=arr[i];
+        
+        for(j=i-1;j>=0 && arr[j]>key;j--)
+        {
+            arr[j+1]=arr[j];
+        }
+        arr[j+1]=key;
+    } 
+
+    // for(int i=0;i<n;i++)
+    // {
+    //     printf("%d\n",arr[i]);
+    // }
 }
 
 

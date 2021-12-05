@@ -1,8 +1,6 @@
-bubblesort.c
 bubblesort.exe
 randomnumbergenerator.py
 randomnumbergenerator.exe
-selectionsort.c
 selectionsort.exe
 try.c
 try.exe
@@ -11,3 +9,8 @@ try2.exe
 .vscode
 random.txt
 lab1.exe
+.gitignore
+insertion_sort.exe
+bubble_sort.exe
+try3.c
+lab1.c
