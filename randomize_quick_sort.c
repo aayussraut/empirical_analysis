@@ -75,7 +75,7 @@ void quickSort(int *arr, int lowerBound, int upperBound)
     }
 }
 
-int randomPortion(int lowerbound, int upperbound)
+int randomPortion(int lowerbound, int upperbound) //generates a random number for pivot
 {
     srand(0);
     int random = lowerbound+ (rand() % (upperbound - lowerbound + 1));
