@@ -9,7 +9,7 @@ void merge(int *arr, int left, int mid, int right);
 
 int main()
 {
-    int arr[1000],i=0,n=10;
+    int arr[1000],i=0,n=1000;
     double a,b,timetaken_mergesort;  
     FILE *fp; //creating a file pointer
     printf("1. Sorted Items\n2. Random Items\n");
@@ -64,29 +64,29 @@ int main()
 
 
 
-void mergeSort(int A[],int left,int right){
+void mergeSort(int *arr,int left,int right){
     int m;
     if(left<right){
         m=(left+right)/2; //finds the middle of the array
-        mergeSort(A,left,m); //calls the function mergeSort
-        mergeSort(A,m+1,right);
-        merge(A,left,m,right); //calls the function merge
+        mergeSort(arr,left,m); //calls the function mergeSort
+        mergeSort(arr,m+1,right);
+        merge(arr,left,m,right); //calls the function merge
     }
 }
 
-void merge(int A[],int left,int mid,int right){
+void merge(int *arr,int left,int mid,int right){
     int B[right-left+1]; 
     int i=left,j=mid+1,k=0;
 
     while(i<=mid && j<=right)//appends the smaller element of the two arrays to the new array(B)
-    B[k++]=A[i]<=A[j]?A[i++]:A[j++];
+    B[k++]=arr[i]<=arr[j]?arr[i++]:arr[j++];
 
     while(i<=mid)//appends the remaining elements of the first array to the new array(B)
-    B[k++]=A[i++];
+    B[k++]=arr[i++];
 
     while(j<=right)//appends the remaining elements of the second array to the new array(B)
-    B[k++]=A[j++];
+    B[k++]=arr[j++];
 
     for(i=left;i<=right;i++)//copies the elements of the new array(B) to the original array(A)
-    A[i]=B[i-left];
+    arr[i]=B[i-left];
 }
