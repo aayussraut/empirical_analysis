@@ -87,7 +87,8 @@ int partition(int *arr,int lowerbound,int upperbound){
     int start=lowerbound;
     int end=upperbound;
     int pivotPosition=randomPortion(lowerbound,upperbound);
-    int pivot=arr[pivotPosition];
+    swap(&arr[pivotPosition],&arr[lowerbound]);
+    int pivot=arr[lowerbound];
     while(start<end){//loop while start is less than end
         while(arr[start]<=pivot && (start<end)){ //loop while the element at start is less than the pivot
             start++;
@@ -100,7 +101,7 @@ int partition(int *arr,int lowerbound,int upperbound){
         }
         
     }
-    swap(&arr[pivotPosition],&arr[end]); //swap the pivot with the element at end
+    swap(&arr[lowerbound],&arr[end]); //swap the pivot with the element at end
     return end;
 }
 void swap(int *a,int *b){ //swaps the elements
